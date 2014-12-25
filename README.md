@@ -87,5 +87,7 @@ Contributing
 
 License and Authors
 -------------------
+
 License: MIT
+
 Author: JamesJJ
