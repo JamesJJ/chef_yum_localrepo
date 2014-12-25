@@ -34,49 +34,39 @@ Attributes
     <td><tt>/etc/yum.repos.d</tt></td>
   </tr>
   <tr>
+    <td><tt>[:yum_localrepo][:files_cookbook]</tt></td>
+    <td>String</td>
+    <td></td>
+    <td><tt>yum-localrepo</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:yum_localrepo][:templates_cookbook]</tt></td>
+    <td>String</td>
+    <td></td>
+    <td><tt>yum-localrepo</tt></td>
+  </tr>
+  <tr>
     <td><tt>[:yum_localrepo][:repos]</tt></td>
     <td>Array of "repo" hashes</td>
-    <td>List of on disk yum repos to create</td>
-    <td><pre>[<br>
-      {<br>
-        name: 'yum_local_repo',<br>
-        path: '/opt/yum_local_repo',<br>
-        enabled: 1,<br>
-        gpgcheck: 0,<br>
-        protect: 1,<br>
-        rpms: [ ]<br>
-      }<br>
-    ]<br>
+    <td>List of on disk yum repos to create. The attributes are used to create a yum.repos.d/<name> file using the template <tt>yum_repo.repo.erb</tt>. RPMs listed in <tt>rpms</tt> will be copied from <tt>[:yum_localrepo][:files_cookbook]/files/...</tt> in to the repo</td>
+    <td><pre>[
+      {
+        name: 'yum_local_repo',
+        path: '/opt/yum_local_repo',
+        enabled: 1,
+        gpgcheck: 0,
+        protect: 1,
+        rpms: [ ]
+      }
+    ]
     </pre></td>
-  </tr>
-</table>
-##### each repo hash:
-<table>
-  <tr>
-    <td><tt></tt></td>
-    <td>String</td>
-    <td></td>
-    <td><tt></tt></td>
-  </tr>
-  <tr>
-    <td><tt></tt></td>
-    <td>String</td>
-    <td></td>
-    <td><tt></tt></td>
-  </tr>
-  <tr>
-    <td><tt></tt></td>
-    <td>String</td>
-    <td></td>
-    <td><tt></tt></td>
   </tr>
 </table>
 
 Usage
 -----
-#### yum-localrepo::default
 
-Just include `yum-localrepo` in your node's `run_list`:
+Include `yum-localrepo` in your node's `run_list`
 
 ```json
 {
