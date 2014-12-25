@@ -31,6 +31,7 @@ node[:yum_localrepo][:repos].each do |_repo|
   end
   _rpms.each do |_rpm|
     cookbook_file File.join(_path,'RPMS',_rpm) do
+      cookbook node[:yum_localrepo][:files_cookbook] unless node[:yum_localrepo][:files_cookbook].nil?
       mode '0644'
       owner 'root'
       group 'root'
@@ -40,8 +41,8 @@ node[:yum_localrepo][:repos].each do |_repo|
     command "createrepo #{_path}"
     environment "PATH" => "/usr/bin:/bin:/usr/sbin:/sbin"
   end
-  template File.join(_yumd,"#{_safename}.repo" do
-    cookbook node[:yum_localrepo][:yumd_cookbook] unless node[:yum_localrepo][:yumd_cookbook].nil?
+  template File.join(_yumd,"#{_safename}.repo") do
+    cookbook node[:yum_localrepo][:templates_cookbook] unless node[:yum_localrepo][:templates_cookbook].nil?
     source 'yum_repo.repo.erb'
     mode '0644'
     owner 'root'
