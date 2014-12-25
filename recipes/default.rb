@@ -15,13 +15,13 @@ end
 
 _yumd = node[:yum_localrepo][:yumd_path]
 node[:yum_localrepo][:repos].each do |_repo|
-  _name = _repo[:name]
-  _path = _repo[:path]
-  _rpms = _repo[:rpms]
-  _enabled = _repo[:enabled]
-  _gpgcheck = _repo[:gpgcheck]
-  _protect = _repo[:protect]
+  _path = _repo[:path] || '/opt/yum_localrepo'
   _safename = _path.to_s.gsub(/[^a-z0-9_\.\-]+/i, '_')
+  _name = _repo[:name] || _safename
+  _rpms = _repo[:rpms] || Array.new()
+  _enabled = _repo[:enabled] || 1
+  _gpgcheck = _repo[:gpgcheck] || 0
+  _protect = _repo[:protect] || 1
   [ _path, File.join(_path,'RPMS') ].each do |_dir|
     directory _dir do
       mode '0755'
