@@ -8,7 +8,7 @@ Many chef cookbooks have package dependencies that are not met by available yum 
 Requirements
 ------------
 
-This recipe should stand alone. Your system will need the "createrepo" package available.
+This recipe should stand alone. Your system will need the "createrepo" package available (the cookbook will attempt to install it).
 
 Attributes
 ----------
@@ -88,6 +88,6 @@ Contributing
 License and Authors
 -------------------
 
-License: MIT
+License: MIT,
 
 Author: JamesJJ
