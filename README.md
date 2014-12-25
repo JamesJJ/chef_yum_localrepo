@@ -37,7 +37,7 @@ Attributes
     <td><tt>[:yum_localrepo][:repos]</tt></td>
     <td>Array of "repo" hashes</td>
     <td>List of on disk yum repos to create</td>
-    <td><tt>[<br>
+    <td><pre>[<br>
       {<br>
         name: 'yum_local_repo',<br>
         path: '/opt/yum_local_repo',<br>
@@ -47,7 +47,7 @@ Attributes
         rpms: [ ]<br>
       }<br>
     ]<br>
-    </tt></td>
+    </pre></td>
   </tr>
 </table>
 ##### each repo hash:
