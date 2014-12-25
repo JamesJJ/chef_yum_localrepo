@@ -3,7 +3,7 @@ yum-localrepo Cookbook
 
 Creates and configures a yum repo on disk for use by the local system. Optionally places specified RPMs into the repo.
 
-Many chef cookbooks have package dependencies that are not met by available yum repositories. You could set-up your own yum repo server and configure your systems to use it, or you could just put your RPM files in <cookbook_name>/files/... and use this cookbook.
+Many chef cookbooks have package dependencies that are not met by available yum repositories. To provide these dependencies, you could set-up your own yum repo server and configure your systems to use it, or you could just put your RPM files in &lt;cookbook_name&gt;/files/... and use this cookbook.
 
 Requirements
 ------------
