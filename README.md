@@ -1,23 +1,18 @@
 yum-localrepo Cookbook
 ======================
-TODO: Enter the cookbook description here.
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+Creates and configures a yum repo on disk for use by the local system. Optionally places specified RPMs into the repo.
+
+Many chef cookbooks have package dependencies that are not met by available yum repositories. You could set-up your own yum repo server and configure your systems to use it, or you could just put your RPM files in <cookbook_name>/files/... and use this cookbook.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
-#### packages
-- `toaster` - yum-localrepo needs toaster to brown your bagel.
+This recipe should stand alone. Your system will need the "createrepo" package available.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
 #### yum-localrepo::default
 <table>
   <tr>
@@ -27,19 +22,60 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['yum-localrepo']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>[:yum_localrepo][:createrepo_package]</tt></td>
+    <td>String</td>
+    <td>The package name that includes the createrepo executable on your distro.</td>
+    <td><tt>createrepo</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:yum_localrepo][:yumd_path]</tt></td>
+    <td>String</td>
+    <td>Directory path where repo configuration files are placed</td>
+    <td><tt>/etc/yum.repos.d</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:yum_localrepo][:repos]</tt></td>
+    <td>Array of "repo" hashes</td>
+    <td>List of on disk yum repos to create</td>
+    <td><tt>[<br>
+      {<br>
+        name: 'yum_local_repo',<br>
+        path: '/opt/yum_local_repo',<br>
+        enabled: 1,<br>
+        gpgcheck: 0,<br>
+        protect: 1,<br>
+        rpms: [ ]<br>
+      }<br>
+    ]<br>
+    </tt></td>
+  </tr>
+</table>
+##### each repo hash:
+<table>
+  <tr>
+    <td><tt></tt></td>
+    <td>String</td>
+    <td></td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt></tt></td>
+    <td>String</td>
+    <td></td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt></tt></td>
+    <td>String</td>
+    <td></td>
+    <td><tt></tt></td>
   </tr>
 </table>
 
 Usage
 -----
 #### yum-localrepo::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
 Just include `yum-localrepo` in your node's `run_list`:
 
 ```json
@@ -53,9 +89,7 @@ Just include `yum-localrepo` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -65,4 +99,5 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+License: MIT
+Author: JamesJJ
