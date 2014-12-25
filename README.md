@@ -36,30 +36,29 @@ Attributes
   <tr>
     <td><tt>[:yum_localrepo][:files_cookbook]</tt></td>
     <td>String</td>
-    <td></td>
+    <td>The cookbook where RPMs are located</td>
     <td><tt>yum-localrepo</tt></td>
   </tr>
   <tr>
     <td><tt>[:yum_localrepo][:templates_cookbook]</tt></td>
     <td>String</td>
-    <td></td>
+    <td>The cookbook where templates are located</td>
     <td><tt>yum-localrepo</tt></td>
   </tr>
   <tr>
     <td><tt>[:yum_localrepo][:repos]</tt></td>
     <td>Array of "repo" hashes</td>
-    <td>List of on disk yum repos to create. The attributes are used to create a yum.repos.d/<name> file using the template <tt>yum_repo.repo.erb</tt>. RPMs listed in <tt>rpms</tt> will be copied from <tt>[:yum_localrepo][:files_cookbook]/files/...</tt> in to the repo</td>
+    <td>List of on disk yum repos to create. The attributes are used to create a yum.repos.d/&lt;name&gt; file using the template <tt>yum_repo.repo.erb</tt>. RPMs listed in <tt>rpms</tt> will be copied from <tt>[:yum_localrepo][:files_cookbook]/files/...</tt> in to the repo</td>
     <td><pre>[
-      {
-        name: 'yum_local_repo',
-        path: '/opt/yum_local_repo',
-        enabled: 1,
-        gpgcheck: 0,
-        protect: 1,
-        rpms: [ ]
-      }
-    ]
-    </pre></td>
+ {
+    name: 'yum_local_repo',
+    path: '/opt/yum_local_repo',
+    enabled: 1,
+    gpgcheck: 0,
+    protect: 1,
+    rpms: [ ]
+  }
+]</pre></td>
   </tr>
 </table>
 
